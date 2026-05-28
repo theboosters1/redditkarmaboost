@@ -112,51 +112,72 @@ export default function Hero({ onGetStartedClick }: HeroProps) {
         </div>
 
         {/* Step-by-Step Instruction Guide */}
-        <div className="mt-8 pt-6 border-t border-zinc-900/80 text-left max-w-3xl mx-auto space-y-4" id="how-it-works-guide">
-          <h3 className="text-xs font-black text-center text-zinc-200 uppercase tracking-widest font-mono">
-            How RedditKarmaBoost Work, what do I do to start?
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-zinc-900/30 border border-zinc-900 rounded-xl p-4 space-y-2 flex flex-col justify-start">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-orange-600/10 border border-orange-500/20 text-orange-400 flex items-center justify-center font-mono text-xs font-black shrink-0">
-                  1
-                </span>
-                <h4 className="text-xs font-black text-white font-sans uppercase tracking-wider">
-                  Place & Confirm
-                </h4>
+        <div className="mt-12 pt-8 border-t border-zinc-800 text-left max-w-3xl mx-auto space-y-6" id="how-it-works-guide">
+          <div className="text-center space-y-1">
+            <span className="px-2 py-0.5 rounded bg-orange-500/15 text-orange-400 border border-orange-500/30 text-[10px] uppercase font-black tracking-widest font-mono">
+              Quickstart Roadmap
+            </span>
+            <h3 className="text-base md:text-lg font-black text-white uppercase tracking-wider font-sans">
+              How RedditKarmaBoost Works & How to Start
+            </h3>
+            <p className="text-zinc-400 text-xs">
+              Follow these three organic steps to securely achieve your target score
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* Step 1 */}
+            <div className="bg-zinc-900/60 border border-zinc-800 hover:border-orange-500/40 transition-all duration-200 rounded-xl p-5 space-y-3 flex flex-col justify-between relative group">
+              <div className="absolute -top-3 -left-3 bg-gradient-to-r from-orange-600 to-amber-500 text-white font-mono text-xs font-black w-7 h-7 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
+                01
               </div>
-              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
-                Place and confirm your order through WhatsApp chat where we provide the most feasible payment gateway for your assistance.
-              </p>
+              <div className="space-y-2 mt-1">
+                <h4 className="text-xs font-black text-orange-400 font-sans uppercase tracking-widest">
+                  Secure WhatsApp Chat
+                </h4>
+                <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+                  Place and confirm your order through WhatsApp chat where we provide the most feasible payment gateway for your assistance.
+                </p>
+              </div>
+              <div className="pt-2 text-[10px] text-zinc-500 font-mono font-bold uppercase tracking-wider">
+                ✓ Encrypted Channels
+              </div>
             </div>
 
-            <div className="bg-zinc-900/30 border border-zinc-900 rounded-xl p-4 space-y-2 flex flex-col justify-start">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-orange-600/10 border border-orange-500/20 text-orange-400 flex items-center justify-center font-mono text-xs font-black shrink-0">
-                  2
-                </span>
-                <h4 className="text-xs font-black text-white font-sans uppercase tracking-wider">
+            {/* Step 2 */}
+            <div className="bg-zinc-900/60 border border-zinc-800 hover:border-orange-500/40 transition-all duration-200 rounded-xl p-5 space-y-3 flex flex-col justify-between relative group">
+              <div className="absolute -top-3 -left-3 bg-gradient-to-r from-orange-600 to-amber-500 text-white font-mono text-xs font-black w-7 h-7 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
+                02
+              </div>
+              <div className="space-y-2 mt-1">
+                <h4 className="text-xs font-black text-orange-400 font-sans uppercase tracking-widest">
                   Secure Co-Posting
                 </h4>
+                <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+                  Once order is placed, our team sends you high-reputation sub-links and custom <strong className="text-white font-bold underline decoration-orange-500">TEXT</strong> templates so that the karma is built organicly by the <span className="text-white font-semibold">real account author</span>.
+                </p>
               </div>
-              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
-                Once order is placed, The RedditKarmaBoost team will send you the post link along with the suggested <strong className="text-orange-400">TEXT</strong> to post, This practice makes it very secure as the Karma is being built by the real account author, we just suggest the best post and text to post.
-              </p>
+              <div className="pt-2 text-[10px] text-zinc-500 font-mono font-bold uppercase tracking-wider">
+                ✓ 100% Organically Safe
+              </div>
             </div>
 
-            <div className="bg-zinc-900/30 border border-zinc-900 rounded-xl p-4 space-y-2 flex flex-col justify-start">
-              <div className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-orange-600/10 border border-orange-500/20 text-orange-400 flex items-center justify-center font-mono text-xs font-black shrink-0">
-                  3
-                </span>
-                <h4 className="text-xs font-black text-white font-sans uppercase tracking-wider">
-                  Full achievement
-                </h4>
+            {/* Step 3 */}
+            <div className="bg-zinc-900/60 border border-zinc-800 hover:border-orange-500/40 transition-all duration-200 rounded-xl p-5 space-y-3 flex flex-col justify-between relative group">
+              <div className="absolute -top-3 -left-3 bg-gradient-to-r from-orange-600 to-amber-500 text-white font-mono text-xs font-black w-7 h-7 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/20">
+                03
               </div>
-              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
-                The team will keep suggesting posts till the desired Karma target is achieved.
-              </p>
+              <div className="space-y-2 mt-1">
+                <h4 className="text-xs font-black text-orange-400 font-sans uppercase tracking-widest">
+                  Achieving Target
+                </h4>
+                <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+                  The team will keep suggesting optimized interactive posts and safe threads until your desired custom Karma count target is fully achieved.
+                </p>
+              </div>
+              <div className="pt-2 text-[10px] text-zinc-500 font-mono font-bold uppercase tracking-wider">
+                ✓ Delivered Guaranteed
+              </div>
             </div>
           </div>
         </div>

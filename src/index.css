@@ -532,3 +532,110 @@
 .light #wa-fab-trigger span {
   border-color: #fcfcfd !important;
 }
+
+/* =========================================
+   Free Vouch Component Animations
+   ========================================= */
+
+/* Idle Tab Button: Gentle Attention Grabber */
+.animate-vouch-idle {
+  animation: vouch-idle-pulse 2.5s infinite ease-in-out;
+  border: 1px dashed rgba(249, 115, 22, 0.3) !important;
+  background-color: rgba(249, 115, 22, 0.05) !important;
+  color: #f97316 !important;
+}
+
+.light .animate-vouch-idle {
+  border: 1px dashed rgba(234, 88, 12, 0.4) !important;
+  background-color: rgba(234, 88, 12, 0.06) !important;
+  color: #ea580c !important;
+}
+
+/* Active Tab Button: Radiant Orange Core Wave */
+.animate-vouch-active {
+  animation: vouch-active-pulse 2.2s infinite ease-in-out;
+  border-color: rgba(249, 115, 22, 0.6) !important;
+}
+
+.light .animate-vouch-active {
+  background-color: #fff7ed !important;
+  border-color: #ffd8a8 !important;
+  color: #c2410c !important;
+}
+
+/* Free Vouch Badge: Ultra Modern Micro Pulse */
+.animate-vouch-badge-glow {
+  animation: vouch-badge-pulse 1.8s infinite alternate ease-in-out;
+}
+
+/* claim free button pulsing */
+.animate-vouch-btn-pulse {
+  animation: vouch-btn-pulse 1.8s infinite ease-in-out;
+}
+
+/* Gift emoji jitter animation on hover of tab */
+#vouch-tab-btn:hover .vouch-gift-emoji {
+  display: inline-block;
+  animation: emoji-jitter 0.6s infinite ease-in-out;
+}
+
+/* Gift emoji jitter on CTA hover */
+#claim-free-vouch-btn:hover .vouch-gift-emoji-btn {
+  display: inline-block;
+  animation: emoji-jitter 0.6s infinite ease-in-out;
+}
+
+/* Keyframes Definitions */
+@keyframes vouch-idle-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px 1px rgba(249, 115, 22, 0.15);
+    border-color: rgba(249, 115, 22, 0.5) !important;
+    background-color: rgba(249, 115, 22, 0.08) !important;
+  }
+}
+
+@keyframes vouch-active-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.1), inset 0 0 4px rgba(249, 115, 22, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 14px 4px rgba(249, 115, 22, 0.25), inset 0 0 8px rgba(249, 115, 22, 0.1);
+    border-color: rgba(249, 115, 22, 0.8) !important;
+  }
+}
+
+@keyframes vouch-badge-pulse {
+  0% {
+    transform: scale(1);
+    background-color: rgba(249, 115, 22, 0.1);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+  100% {
+    transform: scale(1.04);
+    background-color: rgba(249, 115, 22, 0.2);
+    box-shadow: 0 0 8px 1px rgba(249, 115, 22, 0.2);
+  }
+}
+
+@keyframes vouch-btn-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 6px 18px rgba(234, 88, 12, 0.45), 0 0 15px rgba(249, 115, 22, 0.3);
+  }
+}
+
+@keyframes emoji-jitter {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.2) rotate(-10deg); }
+  75% { transform: scale(1.2) rotate(10deg); }
+}
+

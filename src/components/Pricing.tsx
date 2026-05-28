@@ -149,14 +149,15 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
           </button>
           <button
             type="button"
+            id="vouch-tab-btn"
             onClick={() => setPricingMode("vouch")}
             className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
               pricingMode === "vouch" 
-                ? "bg-zinc-900 text-orange-400 font-extrabold border border-orange-550/20 shadow bg-gradient-to-r from-orange-500/10 to-amber-500/10" 
-                : "text-zinc-400 hover:text-zinc-300 cursor-pointer"
+                ? "bg-zinc-900 text-orange-400 font-extrabold border border-orange-550/20 shadow bg-gradient-to-r from-orange-500/10 to-amber-500/10 animate-vouch-active" 
+                : "text-zinc-400 hover:text-orange-300 cursor-pointer animate-vouch-idle"
             }`}
           >
-            🎁 Free Vouch Copy
+            <span className="vouch-gift-emoji">🎁</span> <span className="vouch-text-glow">Free Vouch Copy</span>
           </button>
         </div>
 
@@ -366,7 +367,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
               {pricingMode === "vouch" && (
                 <div className="space-y-4 bg-zinc-950/20 p-5 rounded-xl border border-dashed border-orange-500/30 text-left">
                   <div className="flex items-center gap-2.5">
-                    <span className="p-1 px-2.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[10px] font-black uppercase text-orange-400 font-mono tracking-wider">
+                    <span id="vouch-badge-promo" className="p-1 px-2.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[10px] font-black uppercase text-orange-400 font-mono tracking-wider animate-vouch-badge-glow">
                       🎁 VOUCH TRIAL COPY
                     </span>
                     <h4 className="text-white text-xs font-black uppercase tracking-wider font-sans">
@@ -470,10 +471,11 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                   {pricingMode === "vouch" ? (
                     <button
                       type="button"
+                      id="claim-free-vouch-btn"
                       onClick={handleCustomCheckout}
-                      className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white text-xs font-black rounded-lg transition-all duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-orange-500/20 cursor-pointer hover:scale-[1.01]"
+                      className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white text-xs font-black rounded-lg transition-all duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-orange-500/20 cursor-pointer hover:scale-[1.01] animate-vouch-btn-pulse"
                     >
-                      🎁 Claim Free Vouch Copy
+                      <span className="vouch-gift-emoji-btn">🎁</span> Claim Free Vouch Copy
                     </button>
                   ) : totalPrice > 0 ? (
                     <button

@@ -493,3 +493,42 @@
   border-color: #e4e4e7 !important;
   color: #09090b !important;
 }
+
+/* WhatsApp Support Floating Panel overrides */
+.light #wa-chat-panel {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #wa-active-badge {
+  border-color: #ffffff !important;
+}
+
+.light #wa-chat-board {
+  background-color: #f0f2f5 !important;
+}
+
+.light #wa-chat-bubble {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+  color: #1f2937 !important;
+}
+
+.light #wa-chat-footer {
+  background-color: #f0f2f5 !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #wa-text-input-query {
+  background-color: #ffffff !important;
+  border-color: #d4d4d8 !important;
+  color: #111827 !important;
+}
+
+.light #wa-text-input-query::placeholder {
+  color: #9ca3af !important;
+}
+
+.light #wa-fab-trigger span {
+  border-color: #fcfcfd !important;
+}

@@ -39,7 +39,7 @@ export default function WhatsAppSupport() {
 
       {/* Slide-up Instant Assist Panel */}
       {isOpen && (
-        <div className="w-80 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex flex-col text-left">
+        <div id="wa-chat-panel" className="w-80 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden animate-fade-in flex flex-col text-left">
           {/* Header */}
           <div className="bg-emerald-600 p-4 flex items-center justify-between pb-4 text-white">
             <div className="flex items-center gap-3">
@@ -48,10 +48,10 @@ export default function WhatsAppSupport() {
                   KB
                 </div>
                 {/* Active dot */}
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-zinc-900 rounded-full"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-zinc-900 rounded-full" id="wa-active-badge"></div>
               </div>
               <div>
-                <h4 className="text-sm font-bold leading-tight">Growth Support</h4>
+                <h4 className="text-sm font-bold leading-tight text-white">Growth Support</h4>
                 <span className="text-[10px] text-emerald-100 flex items-center gap-0.5 mt-0.5">
                   <Sparkles className="w-2.5 h-2.5 text-white fill-white" /> Online • Replies in 2 mins
                 </span>
@@ -67,14 +67,14 @@ export default function WhatsAppSupport() {
           </div>
 
           {/* Interactive Chat Board */}
-          <div className="p-4 bg-zinc-950/40 flex-1 space-y-4 max-h-[300px] overflow-y-auto">
-            <div className="bg-zinc-900 p-3 rounded-xl border border-zinc-850 text-xs text-zinc-300 leading-relaxed font-sans max-w-[95%]">
+          <div id="wa-chat-board" className="p-4 bg-zinc-950/40 flex-1 space-y-4 max-h-[300px] overflow-y-auto">
+            <div id="wa-chat-bubble" className="bg-zinc-900 p-3 rounded-xl border border-zinc-850 text-xs text-zinc-300 leading-relaxed font-sans max-w-[95%]">
               Hello there! 👋 Welcome to RedditKarmaBoost.com support desk. How can our organic campaigners assist you today?
             </div>
           </div>
 
           {/* Input field Footer */}
-          <form onSubmit={handleSendQuery} className="p-3 bg-zinc-900 border-t border-zinc-850 flex items-center gap-2">
+          <form id="wa-chat-footer" onSubmit={handleSendQuery} className="p-3 bg-zinc-900 border-t border-zinc-850 flex items-center gap-2">
             <input
               type="text"
               placeholder="Ask anything here..."

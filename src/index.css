@@ -537,29 +537,31 @@
    Free Vouch Component Animations
    ========================================= */
 
-/* Idle Tab Button: Gentle Attention Grabber */
+/* Idle Tab Button: Gentle Attention Grabber with soft glow indicator */
 .animate-vouch-idle {
   animation: vouch-idle-pulse 2.5s infinite ease-in-out;
-  border: 1px dashed rgba(249, 115, 22, 0.3) !important;
+  border: 1px dashed rgba(249, 115, 22, 0.45) !important;
   background-color: rgba(249, 115, 22, 0.05) !important;
   color: #f97316 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .light .animate-vouch-idle {
-  border: 1px dashed rgba(234, 88, 12, 0.4) !important;
+  border: 1px dashed rgba(234, 88, 12, 0.55) !important;
   background-color: rgba(234, 88, 12, 0.06) !important;
   color: #ea580c !important;
 }
 
-/* Active Tab Button: Radiant Orange Core Wave */
+/* Active Tab Button: Radiant Orange Core Wave and premium depth font-styling */
 .animate-vouch-active {
   animation: vouch-active-pulse 2.2s infinite ease-in-out;
-  border-color: rgba(249, 115, 22, 0.6) !important;
+  border-color: rgba(249, 115, 22, 0.75) !important;
+  text-shadow: 0 0 10px rgba(249, 115, 22, 0.35);
 }
 
 .light .animate-vouch-active {
   background-color: #fff7ed !important;
-  border-color: #ffd8a8 !important;
+  border-color: #f97316 !important;
   color: #c2410c !important;
 }
 
@@ -568,9 +570,21 @@
   animation: vouch-badge-pulse 1.8s infinite alternate ease-in-out;
 }
 
-/* claim free button pulsing */
+/* Claim free button pulsing with a powerful glowing magnet pull */
 .animate-vouch-btn-pulse {
   animation: vouch-btn-pulse 1.8s infinite ease-in-out;
+}
+
+/* Automatic gentle wiggle helper to catch peripheral vision organically every 4s */
+.animate-vouch-emoji-wiggle {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: emoji-auto-wiggle 4s infinite ease-in-out;
+}
+
+/* Shimmer sweep animation */
+.animate-vouch-shimmer {
+  animation: vouch-shimmer-sweep 3.5s infinite linear;
 }
 
 /* Gift emoji jitter animation on hover of tab */
@@ -586,26 +600,41 @@
 }
 
 /* Keyframes Definitions */
+@keyframes vouch-shimmer-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  35%, 100% { transform: translateX(250%) skewX(-15deg); }
+}
+
+@keyframes emoji-auto-wiggle {
+  0%, 75%, 100% { transform: scale(1) rotate(0deg); }
+  80% { transform: scale(1.3) rotate(-14deg); }
+  85% { transform: scale(1.3) rotate(14deg); }
+  90% { transform: scale(1.3) rotate(-14deg); }
+  95% { transform: scale(1.3) rotate(14deg); }
+}
+
 @keyframes vouch-idle-pulse {
   0%, 100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
   }
   50% {
-    transform: scale(1.02);
-    box-shadow: 0 0 10px 1px rgba(249, 115, 22, 0.15);
-    border-color: rgba(249, 115, 22, 0.5) !important;
-    background-color: rgba(249, 115, 22, 0.08) !important;
+    transform: scale(1.035);
+    box-shadow: 0 0 16px 2px rgba(249, 115, 22, 0.28);
+    border-color: rgba(249, 115, 22, 0.7) !important;
+    background-color: rgba(249, 115, 22, 0.1) !important;
   }
 }
 
 @keyframes vouch-active-pulse {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.1), inset 0 0 4px rgba(249, 115, 22, 0.05);
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.15), inset 0 0 6px rgba(249, 115, 22, 0.05);
   }
   50% {
-    box-shadow: 0 0 14px 4px rgba(249, 115, 22, 0.25), inset 0 0 8px rgba(249, 115, 22, 0.1);
-    border-color: rgba(249, 115, 22, 0.8) !important;
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 6px rgba(249, 115, 22, 0.38), inset 0 0 12px rgba(249, 115, 22, 0.15);
+    border-color: rgba(249, 115, 22, 1) !important;
   }
 }
 
@@ -616,26 +645,56 @@
     box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
   }
   100% {
-    transform: scale(1.04);
-    background-color: rgba(249, 115, 22, 0.2);
-    box-shadow: 0 0 8px 1px rgba(249, 115, 22, 0.2);
+    transform: scale(1.08);
+    background-color: rgba(249, 115, 22, 0.25);
+    box-shadow: 0 0 12px 2px rgba(249, 115, 22, 0.35);
   }
 }
 
 @keyframes vouch-btn-pulse {
   0%, 100% {
     transform: scale(1);
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.25);
   }
   50% {
-    transform: scale(1.025);
-    box-shadow: 0 6px 18px rgba(234, 88, 12, 0.45), 0 0 15px rgba(249, 115, 22, 0.3);
+    transform: scale(1.04);
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.55), 0 0 20px rgba(249, 115, 22, 0.45);
   }
 }
 
 @keyframes emoji-jitter {
   0%, 100% { transform: scale(1) rotate(0deg); }
-  25% { transform: scale(1.2) rotate(-10deg); }
-  75% { transform: scale(1.2) rotate(10deg); }
+  25% { transform: scale(1.25) rotate(-12deg); }
+  75% { transform: scale(1.25) rotate(12deg); }
 }
+
+/* =========================================
+   Get Karma Now Header Button Glow Animation
+   ========================================= */
+.animate-get-karma-btn-glow {
+  animation: get-karma-btn-glow-pulse 2.2s infinite ease-in-out;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-get-karma-btn-glow:hover {
+  transform: scale(1.07) !important;
+}
+
+@keyframes get-karma-btn-glow-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(234, 88, 12, 0.22);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 22px rgba(234, 88, 12, 0.55), 0 0 15px rgba(245, 158, 11, 0.35);
+  }
+}
+
+/* Guarantee Submit / Campaign Build Button text is white in all states */
+#boost-campaign-btn,
+.light #boost-campaign-btn {
+  color: #ffffff !important;
+}
+
 

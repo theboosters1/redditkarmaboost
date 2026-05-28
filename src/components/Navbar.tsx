@@ -44,10 +44,15 @@ export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme }: 
 
         <button
           onClick={() => scrollSection("pricing")}
-          className="px-3.5 py-1.5 md:px-4 md:py-2 bg-orange-600 hover:bg-orange-500 text-white font-extrabold rounded-xl text-[11px] md:text-xs shadow-lg shadow-orange-500/10 cursor-pointer"
+          className="px-3.5 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-extrabold rounded-xl text-[11px] md:text-xs shadow-lg cursor-pointer relative overflow-hidden animate-get-karma-btn-glow"
           id="nav-btn-buy"
         >
-          Get Karma Now
+          {/* Radiant sweep shimmer */}
+          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-vouch-shimmer pointer-events-none" />
+          
+          <span className="relative z-10 flex items-center gap-1">
+            🔥 Get Karma Now
+          </span>
         </button>
       </div>
     </header>

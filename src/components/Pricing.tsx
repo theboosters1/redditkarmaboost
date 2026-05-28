@@ -151,13 +151,23 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
             type="button"
             id="vouch-tab-btn"
             onClick={() => setPricingMode("vouch")}
-            className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 relative overflow-hidden ${
               pricingMode === "vouch" 
                 ? "bg-zinc-900 text-orange-400 font-extrabold border border-orange-550/20 shadow bg-gradient-to-r from-orange-500/10 to-amber-500/10 animate-vouch-active" 
                 : "text-zinc-400 hover:text-orange-300 cursor-pointer animate-vouch-idle"
             }`}
           >
-            <span className="vouch-gift-emoji">🎁</span> <span className="vouch-text-glow">Free Vouch Copy</span>
+            {/* Shimmer sweep effect */}
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full animate-vouch-shimmer pointer-events-none" />
+            
+            <span className="vouch-gift-emoji animate-vouch-emoji-wiggle">🎁</span> 
+            <span className="vouch-text-glow">Free Vouch Copy</span>
+
+            {/* Pulsing indicator badge */}
+            <span className="absolute top-1 right-2 flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-orange-500"></span>
+            </span>
           </button>
         </div>
 
@@ -473,17 +483,21 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                       type="button"
                       id="claim-free-vouch-btn"
                       onClick={handleCustomCheckout}
-                      className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white text-xs font-black rounded-lg transition-all duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-orange-500/20 cursor-pointer hover:scale-[1.01] animate-vouch-btn-pulse"
+                      className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white text-xs font-black rounded-lg transition-all duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-orange-500/20 cursor-pointer hover:scale-[1.01] animate-vouch-btn-pulse relative overflow-hidden"
                     >
-                      <span className="vouch-gift-emoji-btn">🎁</span> Claim Free Vouch Copy
+                      {/* Shimmer sweep effect */}
+                      <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-vouch-shimmer pointer-events-none" />
+
+                      <span className="vouch-gift-emoji-btn animate-vouch-emoji-wiggle">🎁</span> Claim Free Vouch Copy
                     </button>
                   ) : totalPrice > 0 ? (
                     <button
                       type="button"
+                      id="boost-campaign-btn"
                       onClick={handleCustomCheckout}
                       className="w-full sm:w-auto px-6 py-3 bg-orange-600 hover:bg-orange-500 active:bg-orange-650 text-white text-xs font-black rounded-lg transition-all duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-orange-500/20 cursor-pointer hover:scale-[1.01]"
                     >
-                      Boost This Campaign
+                      Submit
                     </button>
                   ) : (
                     <button

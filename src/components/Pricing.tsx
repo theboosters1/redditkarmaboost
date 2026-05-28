@@ -182,13 +182,13 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
               </div>
               
               {/* Promo tag */}
-              <div className="bg-orange-600/10 border border-orange-500/20 rounded-lg px-3 py-1.5 flex items-center gap-2 shrink-0 self-start sm:self-auto">
-                <Percent className="w-3.5 h-3.5 text-orange-400" />
+              <div id="pricing-promo-tag" className="bg-orange-600/10 border border-orange-500/20 rounded-lg px-3 py-1.5 flex items-center gap-2 shrink-0 self-start sm:self-auto">
+                <Percent id="pricing-promo-icon" className="w-3.5 h-3.5 text-orange-400" />
                 <div className="text-left font-sans">
-                  <span className="text-[9px] text-zinc-400 block font-mono uppercase font-bold tracking-wider leading-none">
+                  <span id="pricing-promo-label" className="text-[9px] text-zinc-400 block font-mono uppercase font-bold tracking-wider leading-none">
                     {pricingMode === "vouch" ? "FREE OFFER" : "Summed Promo"}
                   </span>
-                  <span className="text-[11px] text-white font-black leading-none">
+                  <span id="pricing-promo-value" className="text-[11px] text-white font-black leading-none">
                     {pricingMode === "vouch" ? "100% OFF TRIAL COPY" : "Ratio Discount Built-In"}
                   </span>
                 </div>

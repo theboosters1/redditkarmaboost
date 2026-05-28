@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="max-w-4xl mx-auto text-center space-y-5 relative z-10">
         
         {/* Trust Pilot Mimic Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[11px] md:text-xs text-zinc-350 mx-auto">
+        <div id="hero-trust-badge" className="inline-flex items-center gap-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[11px] md:text-xs text-zinc-350 mx-auto">
           <span className="flex text-orange-500">
             <Star className="w-3 h-3 fill-current" />
             <Star className="w-3 h-3 fill-current" />
@@ -17,10 +17,10 @@ export default function Hero() {
             <Star className="w-3 h-3 fill-current" />
             <Star className="w-3 h-3 fill-current" />
           </span>
-          <span className="text-zinc-650">|</span>
-          <span className="font-semibold text-white">4.9/5 Rating</span>
-          <span className="text-zinc-650">•</span>
-          <span className="text-zinc-450">12,000+ Accounts Levelled</span>
+          <span className="text-zinc-650" id="hero-trust-divider-1">|</span>
+          <span className="font-semibold text-white" id="hero-trust-rating">4.9/5 Rating</span>
+          <span className="text-zinc-650" id="hero-trust-divider-2">•</span>
+          <span className="text-zinc-450" id="hero-trust-count">12,000+ Accounts Levelled</span>
         </div>
 
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] font-sans">

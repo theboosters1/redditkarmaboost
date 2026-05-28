@@ -77,24 +77,21 @@
 }
 
 /* Trust Pilot Mimic Badge under light mode */
-.light #hero-section .inline-flex.bg-zinc-900 {
+.light #hero-trust-badge {
   background-color: #f4f4f5 !important;
   border-color: #e4e4e7 !important;
 }
 
-.light #hero-section .inline-flex.bg-zinc-900 .text-white {
+.light #hero-trust-rating {
   color: #09090b !important;
 }
 
-.light #hero-section .inline-flex.bg-zinc-900 .text-zinc-350 {
-  color: #52525b !important;
-}
-
-.light #hero-section .inline-flex.bg-zinc-900 .text-zinc-450 {
+.light #hero-trust-count {
   color: #27272a !important;
 }
 
-.light #hero-section .inline-flex.bg-zinc-900 .text-zinc-650 {
+.light #hero-trust-divider-1,
+.light #hero-trust-divider-2 {
   color: #d4d4d8 !important;
 }
 
@@ -209,19 +206,20 @@
   color: #18181b !important;
 }
 
-.light #custom-karma-builder-container .bg-orange-600\/10,
-.light #pricing .bg-orange-600\/10 {
+.light #pricing-promo-tag {
   background-color: #fff7ed !important;
   border-color: #ffd8a8 !important;
 }
 
-.light #custom-karma-builder-container .bg-orange-600\/10 span,
-.light #pricing .bg-orange-600\/10 span {
+.light #pricing-promo-icon {
+  color: #ea580c !important;
+}
+
+.light #pricing-promo-label {
   color: #c2410c !important;
 }
 
-.light #custom-karma-builder-container .bg-orange-600\/10 .text-white,
-.light #pricing .bg-orange-600\/10 .text-white {
+.light #pricing-promo-value {
   color: #9a3412 !important;
 }
 

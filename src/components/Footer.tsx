@@ -2,10 +2,9 @@ import { Flame, ShieldCheck, Heart, ExternalLink } from "lucide-react";
 
 interface FooterProps {
   onOpenTrustModal: (type: "about" | "privacy" | "terms") => void;
-  onOpenTracker: () => void;
 }
 
-export default function Footer({ onOpenTrustModal, onOpenTracker }: FooterProps) {
+export default function Footer({ onOpenTrustModal }: FooterProps) {
   const scrollSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -53,11 +52,6 @@ export default function Footer({ onOpenTrustModal, onOpenTracker }: FooterProps)
             <li>
               <button onClick={() => scrollSection("faqs")} className="hover:text-white transition-colors cursor-pointer text-left">
                 People Also Asked
-              </button>
-            </li>
-            <li>
-              <button onClick={onOpenTracker} className="hover:text-white transition-colors cursor-pointer text-left">
-                Order Tracking
               </button>
             </li>
           </ul>

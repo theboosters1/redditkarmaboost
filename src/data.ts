@@ -77,7 +77,6 @@ export interface CustomPlanOption {
 }
 
 export const COMMENT_KARMA_PLANS: CustomPlanOption[] = [
-  { karma: 0, label: "No Comment Karma", price: 0 },
   { karma: 10, label: "10 Comment Karma ($5)", price: 5 },
   { karma: 15, label: "15 Comment Karma ($10)", price: 10 },
   { karma: 50, label: "50 Comment Karma ($50)", price: 50 },
@@ -85,7 +84,6 @@ export const COMMENT_KARMA_PLANS: CustomPlanOption[] = [
 ];
 
 export const POST_KARMA_PLANS: CustomPlanOption[] = [
-  { karma: 0, label: "No Post Karma", price: 0 },
   { karma: 15, label: "15 Post Karma ($5)", price: 5 },
   { karma: 50, label: "50 Post Karma ($10)", price: 10 },
   { karma: 300, label: "300 Post Karma ($30)", price: 30 },

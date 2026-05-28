@@ -215,6 +215,34 @@
   color: #52525b !important;
 }
 
+/* Reddit target username inputs and labels styling in light mode */
+.light #custom-karma-builder-container .bg-zinc-950\/40 {
+  background-color: #fbfbfb !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #custom-karma-builder-container .text-zinc-200 {
+  color: #18181b !important;
+}
+
+.light #custom-karma-builder-container .text-zinc-400 {
+  color: #52525b !important;
+}
+
+.light #custom-karma-builder-container input[type="text"] {
+  background-color: #ffffff !important;
+  border-color: #d4d4d8 !important;
+  color: #18181b !important;
+}
+
+.light #custom-karma-builder-container input[type="text"]::placeholder {
+  color: #a1a1aa !important;
+}
+
+.light #custom-karma-builder-container .relative span.text-zinc-400 {
+  color: #71717a !important;
+}
+
 /* Secure seal card */
 .light .max-w-2xl.mx-auto.bg-zinc-900\/40 {
   background-color: #ffffff !important;
@@ -249,21 +277,40 @@
   color: #3f3f46 !important;
 }
 
-.light #reviews .grid > div {
-  background-color: #fcfcfd !important;
+.light #reviews [id^="review-card-"] {
+  background-color: #f9fafb !important;
   border-color: #e4e4e7 !important;
 }
 
-.light #reviews .grid > div h4 {
+.light #reviews [id^="review-card-"]:hover {
+  border-color: #ea580c !important;
+  background-color: #ffffff !important;
+}
+
+.light #reviews [id^="review-card-"] p {
+  color: #1c1917 !important;
+}
+
+.light #reviews [id^="review-card-"] .border-t {
+  border-color: #e4e4e7 !important;
+}
+
+.light #reviews [id^="review-card-"] h4,
+.light #reviews [id^="review-card-"] h4 span {
   color: #09090b !important;
 }
 
-.light #reviews .grid > div p {
-  color: #27272a !important;
+.light #reviews [id^="review-card-"] svg {
+  color: #ea580c !important; /* rating stars */
+  fill: #ea580c !important;
 }
 
-.light #reviews .grid > div span {
-  color: #52525b !important;
+.light #reviews [id^="review-card-"] .text-orange-400 {
+  color: #ea580c !important; /* user role */
+}
+
+.light #reviews [id^="review-card-"] img {
+  border-color: #e4e4e7 !important;
 }
 
 /* FAQs Panel */
@@ -280,17 +327,56 @@
   color: #3f3f46 !important;
 }
 
-.light #faqs .grid > div {
+.light #faqs [id^="faq-item-"] {
   background-color: #ffffff !important;
   border-color: #e4e4e7 !important;
 }
 
-.light #faqs .grid > div h3 {
+.light #faqs [id^="faq-item-"] button span {
   color: #09090b !important;
 }
 
-.light #faqs .grid > div p {
+.light #faqs [id^="faq-item-"] button span.text-white {
+  color: #09090b !important;
+}
+
+.light #faqs [id^="faq-item-"] button span.bg-zinc-950 {
+  background-color: #f4f4f5 !important;
+  color: #71717a !important;
+}
+
+.light #faqs [id^="faq-item-"] .border-t {
+  border-color: #e4e4e7 !important;
+  background-color: #fbfbfa !important;
+}
+
+.light #faqs [id^="faq-item-"] p {
   color: #27272a !important;
+}
+
+.light #faqs [id^="faq-item-"] .text-zinc-300 {
+  color: #18181b !important;
+}
+
+.light #faqs [id^="faq-item-"] .border-l {
+  border-color: #e4e4e7 !important;
+}
+
+.light #faqs [id^="faq-item-"] .border-l span {
+  color: #4b5563 !important;
+}
+
+.light #faqs .bg-gradient-to-r {
+  background: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #faqs .bg-gradient-to-r h4 {
+  color: #09090b !important;
+}
+
+.light #faqs .bg-gradient-to-r p {
+  color: #52525b !important;
 }
 
 /* Footer Section Overrides */

@@ -18,9 +18,9 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("rkb-theme");
-      return saved === "light" ? false : true;
+      return saved === "dark" ? true : false;
     }
-    return true;
+    return false;
   });
 
   const toggleTheme = () => {

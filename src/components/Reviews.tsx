@@ -1,6 +1,21 @@
 import { Star, MessageSquare } from "lucide-react";
 import { CUSTOMER_REVIEWS } from "../data";
 
+const getAvatarUrl = (seed: string) => {
+  switch (seed) {
+    case "crypto":
+      return "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80";
+    case "developer":
+      return "https://images.unsplash.com/photo-1628157582853-a796fa650a6a?auto=format&fit=crop&w=120&h=120&q=80";
+    case "meme":
+      return "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=120&h=120&q=80";
+    case "marketing":
+      return "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=120&h=120&q=80";
+    default:
+      return `https://picsum.photos/seed/${seed}/120/120`;
+  }
+};
+
 export default function Reviews() {
   return (
     <section className="bg-zinc-950 py-16 md:py-24 px-4 md:px-8 border-b border-zinc-900 scroll-mt-10" id="reviews">
@@ -43,9 +58,12 @@ export default function Reviews() {
 
               {/* User Profiling Panel */}
               <div className="flex items-center gap-3 pt-5 border-t border-zinc-850 mt-5 text-left">
-                <div className="w-9 h-9 rounded-full bg-zinc-850 text-white font-sans flex items-center justify-center font-bold text-xs shrink-0 select-none border border-zinc-800 capitalize">
-                  {rev.username.charAt(2)}
-                </div>
+                <img
+                  src={getAvatarUrl(rev.avatarSeed)}
+                  alt={rev.username}
+                  className="w-9 h-9 rounded-full object-cover shrink-0 border border-zinc-805 shadow-sm"
+                  referrerPolicy="no-referrer"
+                />
                 <div>
                   <h4 className="text-xs font-bold text-white font-sans flex items-center gap-1.5 leading-snug">
                     <span>{rev.username}</span>

@@ -1,10 +1,12 @@
-import { Flame, Clock } from "lucide-react";
+import { Flame, Sun, Moon } from "lucide-react";
 
 interface NavbarProps {
   onOpenTrustModal: (type: "about" | "privacy" | "terms") => void;
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
 }
 
-export default function Navbar({ onOpenTrustModal }: NavbarProps) {
+export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme }: NavbarProps) {
   const scrollSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -75,6 +77,15 @@ export default function Navbar({ onOpenTrustModal }: NavbarProps) {
 
       {/* Primary Actions */}
       <div className="flex items-center gap-2.5">
+        <button
+          onClick={onToggleTheme}
+          className="p-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 rounded-xl transition-all duration-200 cursor-pointer flex items-center justify-center border border-zinc-800"
+          id="theme-toggle"
+          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          {isDarkMode ? <Sun className="w-4 h-4 text-amber-500" /> : <Moon className="w-4 h-4 text-indigo-400" />}
+        </button>
+
         <button
           onClick={() => scrollSection("pricing")}
           className="px-3.5 py-1.5 md:px-4 md:py-2 bg-orange-600 hover:bg-orange-500 text-white font-extrabold rounded-xl text-[11px] md:text-xs shadow-lg shadow-orange-500/10 cursor-pointer"

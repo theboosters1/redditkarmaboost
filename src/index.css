@@ -17,3 +17,362 @@
   25% { transform: translateX(-4px); }
   75% { transform: translateX(4px); }
 }
+
+/* =========================================
+   Light Theme Style Overrides
+   ========================================= */
+.light {
+  background-color: #fcfcfd !important;
+  color: #18181b !important;
+}
+
+/* Header & Nav */
+.light #navbar-header {
+  background-color: rgba(252, 252, 253, 0.9) !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #navbar-header .text-white,
+.light #navbar-header .text-zinc-100 {
+  color: #09090b !important;
+}
+
+.light #navbar-header button {
+  color: #3f3f46 !important;
+}
+
+.light #navbar-header button:hover {
+  color: #09090b !important;
+}
+
+/* Theme toggle button specific light style */
+.light #theme-toggle {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+  color: #18181b !important;
+}
+
+.light #theme-toggle:hover {
+  background-color: #e4e4e7 !important;
+}
+
+/* Hero Section */
+.light #hero-section {
+  background-color: #fbfbfb !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #hero-section h1 {
+  color: #09090b !important;
+}
+
+.light #hero-section p {
+  color: #3f3f46 !important;
+}
+
+.light #hero-section .bg-zinc-900 {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+  color: #18181b !important;
+}
+
+.light .text-zinc-350,
+.light .text-zinc-450,
+.light .text-zinc-300 {
+  color: #27272a !important;
+}
+
+/* Roadmap Guide info card components */
+.light #how-it-works-guide h3 {
+  color: #27272a !important;
+}
+
+.light #how-it-works-guide p {
+  color: #52525b !important;
+}
+
+.light #how-it-works-guide h4 {
+  color: #09090b !important;
+}
+
+.light #how-it-works-guide .bg-zinc-900\/60 {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #how-it-works-guide .bg-zinc-900\/60 p {
+  color: #52525b !important;
+}
+
+.light #how-it-works-guide .bg-zinc-900\/60 .text-zinc-300 {
+  color: #27272a !important;
+}
+
+.light #how-it-works-guide .bg-zinc-900\/60:hover {
+  border-color: #ea580c !important;
+  background-color: #fffaf0 !important;
+}
+
+/* Pricing container */
+.light #pricing {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #pricing h2 {
+  color: #09090b !important;
+}
+
+.light #pricing p {
+  color: #3f3f46 !important;
+}
+
+/* Switch tab controller */
+.light #pricing .bg-zinc-950 {
+  background-color: #e4e4e7 !important;
+  border-color: #d4d4d8 !important;
+}
+
+.light #pricing .bg-zinc-950 button {
+  color: #52525b !important;
+}
+
+.light #pricing .bg-zinc-950 button.bg-zinc-900 {
+  background-color: #ffffff !important;
+  border-color: #d4d4d8 !important;
+  color: #18181b !important;
+}
+
+/* Interactive custom karma block builder card */
+.light #custom-karma-builder-container {
+  background-color: #ffffff !important;
+  border-color: #ffedd5 !important;
+}
+
+.light #custom-karma-builder-container h3,
+.light #custom-karma-builder-container h4 {
+  color: #09090b !important;
+}
+
+.light #custom-karma-builder-container label {
+  color: #18181b !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950 {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #custom-karma-builder-container input[type="number"] {
+  background-color: #ffffff !important;
+  border-color: #d4d4d8 !important;
+  color: #18181b !important;
+}
+
+.light #custom-karma-builder-container input[type="number"]:focus {
+  border-color: #ea580c !important;
+}
+
+.light #custom-karma-builder-container input[type="range"] {
+  background-color: #e4e4e7 !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950 button {
+  color: #3f3f46 !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950 button.bg-zinc-900 {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+  color: #18181b !important;
+}
+
+.light #custom-karma-builder-container .bg-orange-600\/10 {
+  background-color: #fff7ed !important;
+  border-color: #ffd8a8 !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950.border-zinc-900 {
+  background-color: #fbfbfb !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950.border-zinc-900 span.text-white {
+  color: #09090b !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950.border-zinc-900 div.text-white {
+  color: #09090b !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950.border-zinc-900 .bg-zinc-900 {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+  color: #18181b !important;
+}
+
+.light #custom-karma-builder-container .bg-zinc-950.border-zinc-900 .text-zinc-400 {
+  color: #52525b !important;
+}
+
+/* Secure seal card */
+.light .max-w-2xl.mx-auto.bg-zinc-900\/40 {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light .max-w-2xl.mx-auto.bg-zinc-900\/40 h4 {
+  color: #09090b !important;
+}
+
+.light .max-w-2xl.mx-auto.bg-zinc-900\/40 p {
+  color: #52525b !important;
+}
+
+.light .max-w-2xl.mx-auto.bg-zinc-900\/40 .bg-zinc-950 {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+  color: #3f3f46 !important;
+}
+
+/* Reviews Panel */
+.light #reviews {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #reviews h2 {
+  color: #09090b !important;
+}
+
+.light #reviews p {
+  color: #3f3f46 !important;
+}
+
+.light #reviews .grid > div {
+  background-color: #fcfcfd !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #reviews .grid > div h4 {
+  color: #09090b !important;
+}
+
+.light #reviews .grid > div p {
+  color: #27272a !important;
+}
+
+.light #reviews .grid > div span {
+  color: #52525b !important;
+}
+
+/* FAQs Panel */
+.light #faqs {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #faqs h2 {
+  color: #09090b !important;
+}
+
+.light #faqs p {
+  color: #3f3f46 !important;
+}
+
+.light #faqs .grid > div {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #faqs .grid > div h3 {
+  color: #09090b !important;
+}
+
+.light #faqs .grid > div p {
+  color: #27272a !important;
+}
+
+/* Footer Section Overrides */
+.light #footer {
+  background-color: #fcfcfd !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #footer p,
+.light #footer div {
+  color: #52525b !important;
+}
+
+.light #footer h3 {
+  color: #09090b !important;
+}
+
+.light #footer button {
+  color: #3f3f46 !important;
+}
+
+.light #footer button:hover {
+  color: #09090b !important;
+}
+
+.light #footer-brand-title {
+  color: #09090b !important;
+}
+
+/* Dialog Overlay */
+.light [role="dialog"],
+.light .fixed.inset-0 {
+  color: #1c1917 !important;
+}
+
+.light [role="dialog"] .bg-zinc-950 {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light [role="dialog"] .text-white,
+.light [role="dialog"] .text-zinc-100 {
+  color: #09090b !important;
+}
+
+.light [role="dialog"] .text-zinc-400 {
+  color: #52525b !important;
+}
+
+.light [role="dialog"] .text-zinc-300 {
+  color: #27272a !important;
+}
+
+.light [role="dialog"] .border-zinc-900,
+.light [role="dialog"] .border-zinc-850 {
+  border-color: #e4e4e7 !important;
+}
+
+.light [role="dialog"] input,
+.light [role="dialog"] select {
+  background-color: #ffffff !important;
+  border-color: #d4d4d8 !important;
+  color: #09090b !important;
+}
+
+/* Live alert panel toast layout */
+.light #recent-order-alert-panel .bg-orange-655\/10,
+.light #recent-order-alert-panel .bg-orange-650\/10 {
+  background-color: #fff7ed !important;
+  border-color: #ffd8a8 !important;
+}
+
+.light #recent-order-alert-panel span.text-white {
+  color: #09090b !important;
+}
+
+.light #recent-order-alert-panel .text-orange-400 {
+  color: #c2410c !important;
+}
+
+.light #recent-order-alert-panel code {
+  background-color: #ffffff !important;
+  border-color: #e4e4e7 !important;
+  color: #09090b !important;
+}

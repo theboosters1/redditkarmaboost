@@ -15,6 +15,22 @@ export default function App() {
   const [trustModalType, setTrustModalType] = useState<"about" | "privacy" | "terms" | null>(null);
   const [recentOrderAlert, setRecentOrderAlert] = useState<Order | null>(null);
 
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("rkb-theme");
+      return saved === "light" ? false : true;
+    }
+    return true;
+  });
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      const next = !prev;
+      localStorage.setItem("rkb-theme", next ? "dark" : "light");
+      return next;
+    });
+  };
+
   const handleSelectPackage = (pkg: KarmaPackage) => {
     setSelectedPackage(pkg);
   };
@@ -31,10 +47,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans antialiased overflow-x-hidden" id="app-root-container">
+    <div className={`min-h-screen ${isDarkMode ? "bg-zinc-950 text-zinc-100" : "light bg-zinc-50 text-zinc-905"} flex flex-col font-sans antialiased overflow-x-hidden`} id="app-root-container">
       {/* Top Header Navigation */}
       <Navbar
         onOpenTrustModal={(type) => setTrustModalType(type)}
+        isDarkMode={isDarkMode}
+        onToggleTheme={toggleTheme}
       />
 
       {/* Hero section */}

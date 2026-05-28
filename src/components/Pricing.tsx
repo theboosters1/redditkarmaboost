@@ -25,15 +25,14 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
     const cleanUsername = redditUsername.trim().replace(/^u\//i, "");
     
     // Construct rich, professional order details to send to WhatsApp chat
-    const message = `🚀 *NEW CUSTOM REDDIT KARMA ORDER* 🚀
+    const message = `- *NEW CUSTOM REDDIT KARMA ORDER* -
 ----------------------------------------
-👤 *Reddit Username:* ${cleanUsername ? `u/${cleanUsername}` : "_Not specified_"}
-💬 *Comment Karma:* ${selectedComment.karma > 0 ? `+${selectedComment.karma} Karma ($${selectedComment.price})` : "None"}
-📝 *Post Karma:* ${selectedPost.karma > 0 ? `+${selectedPost.karma} Karma ($${selectedPost.price})` : "None"}
-📈 *Total Target Karma:* +${totalKarma} Points
-💰 *Combined Price:* $${totalPrice.toFixed(2)}
-----------------------------------------
-✨ Please format my custom secure Stripe checkout link!`;
+- *Reddit Username:* ${cleanUsername ? `u/${cleanUsername}` : "_Not specified_"}
+- *Comment Karma:* ${selectedComment.karma > 0 ? `+${selectedComment.karma} Karma ($${selectedComment.price})` : "None"}
+- *Post Karma:* ${selectedPost.karma > 0 ? `+${selectedPost.karma} Karma ($${selectedPost.price})` : "None"}
+- *Total Target Karma:* +${totalKarma} Points
+- *Combined Price:* $${totalPrice.toFixed(2)}
+----------------------------------------`;
 
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/923029626015?text=${encoded}`, "_blank");

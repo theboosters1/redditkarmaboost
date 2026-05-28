@@ -34,8 +34,11 @@ export default function CheckoutModal({ isOpen, onClose, selectedPackage, onOrde
       setExpiry("");
       setCvv("");
       setCardName("");
+      if (selectedPackage) {
+        setTargetType(selectedPackage.karmaType);
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, selectedPackage]);
 
   if (!isOpen || !selectedPackage) return null;
 

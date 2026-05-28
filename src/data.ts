@@ -2,78 +2,96 @@ import { KarmaPackage, Review, FAQItem } from "./types";
 
 export const KARMA_PACKAGES: KarmaPackage[] = [
   {
-    id: "pkg-starter",
-    name: "Starter Boost",
-    karmaCount: 200,
-    price: 9.99,
+    id: "pkg-comment-starter",
+    name: "Comment Starter",
+    karmaCount: 10,
+    price: 5.00,
     features: [
-      "200 organic Karma points",
-      "Spread on post & comment karma",
-      "Safe organic drip-feed",
-      "No password or login required",
-      "Safe for accounts > 1 day old",
+      "10 High-Quality Comment Karma",
+      "Perfect for bypassing initial commenting limits",
+      "Naturally posted on top subreddits",
+      "No password or OAuth required",
+      "Safest delivery mechanism",
+      "6-12 Hours Delivery"
+    ],
+    deliveryTime: "6-12 Hours",
+    karmaType: "comment"
+  },
+  {
+    id: "pkg-post-starter",
+    name: "Post Starter",
+    karmaCount: 50,
+    price: 5.00,
+    features: [
+      "50 Premium Post Karma points",
+      "Bypass auto-moderator filters instantly",
+      "High-authority upvotes by real users",
+      "Safe for brand new accounts",
+      "100% Secure & natural drip-feed",
       "12-24 Hours Delivery"
     ],
     deliveryTime: "12-24 Hours",
-    karmaType: "mix"
+    karmaType: "post"
   },
   {
     id: "pkg-growth",
-    name: "Growth Boost",
-    karmaCount: 500,
-    price: 19.99,
-    savings: "Save 20%",
+    name: "Professional Growth Boost",
+    karmaCount: 250,
+    price: 15.00,
+    savings: "Save 25%",
     isPopular: true,
     features: [
-      "500 high-quality Karma points",
-      "Choose Post or Comment focus",
-      "Natural distribution algorithms",
-      "Advanced shadowban safety",
-      "Unlock post limits in major subreddits",
-      "24-36 Hours Delivery",
+      "250 Balanced Karma points (Post/Comment)",
+      "Fully customized distribution ratio",
+      "Advanced anti-shadowban safety protocols",
+      "Unlocks posting rights in major subreddits",
+      "24 Hours Safe drip timeline",
       "24/7 WhatsApp Priority Support"
     ],
-    deliveryTime: "24-36 Hours",
+    deliveryTime: "24 Hours",
     karmaType: "mix"
   },
   {
     id: "pkg-elite",
     name: "Elite Creator Pro",
-    karmaCount: 1500,
-    price: 49.99,
-    savings: "Save 30%",
+    karmaCount: 1000,
+    price: 39.00,
+    savings: "Save 40%",
     features: [
-      "1,500 premium Karma points",
-      "Custom mix ratio requested by user",
-      "Upvoted by Aged aged-accounts with high authority",
-      "Zero account ban risks",
-      "100% Guaranteed delivery or refund",
-      "36-48 Hours safe delivery period",
-      "Lifetime VIP Support"
+      "1,000 Premium Authority Karma points",
+      "Highly aged high-karma profiles engagement",
+      "Zero account ban risk guaranteed",
+      "Refund insurance backed by Stripe",
+      "36-48 Hours safe campaign delivery",
+      "Personal Campaign Manager over WhatsApp"
     ],
     deliveryTime: "36-48 Hours",
     karmaType: "mix"
-  },
-  {
-    id: "pkg-reseller",
-    name: "Ultimate Subreddit Dominator",
-    karmaCount: 5000,
-    price: 129.99,
-    savings: "Save 45%",
-    features: [
-      "5,000 maximum authority Karma points",
-      "Tailored campaign strategy",
-      "Drip fed over 3-5 days for natural spikes",
-      "Multi-subreddit interaction strategy",
-      "Unlocks post permissions and instant credibility",
-      "3-5 Days distribution period",
-      "Dedicated account manager",
-      "Stripe payment refund guarantee"
-    ],
-    deliveryTime: "3-5 Days",
-    karmaType: "mix"
   }
 ];
+
+export interface CustomPlanOption {
+  karma: number;
+  label: string;
+  price: number;
+}
+
+export const COMMENT_KARMA_PLANS: CustomPlanOption[] = [
+  { karma: 0, label: "No Comment Karma", price: 0 },
+  { karma: 10, label: "10 Comment Karma ($5)", price: 5 },
+  { karma: 15, label: "15 Comment Karma ($10)", price: 10 },
+  { karma: 50, label: "50 Comment Karma ($50)", price: 50 },
+  { karma: 100, label: "100 Comment Karma ($99)", price: 99 },
+];
+
+export const POST_KARMA_PLANS: CustomPlanOption[] = [
+  { karma: 0, label: "No Post Karma", price: 0 },
+  { karma: 15, label: "15 Post Karma ($5)", price: 5 },
+  { karma: 50, label: "50 Post Karma ($10)", price: 10 },
+  { karma: 300, label: "300 Post Karma ($30)", price: 30 },
+  { karma: 1000, label: "1000+ Post Karma ($60)", price: 60 },
+];
+
 
 export const CUSTOMER_REVIEWS: Review[] = [
   {

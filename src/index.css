@@ -76,6 +76,28 @@
   color: #18181b !important;
 }
 
+/* Trust Pilot Mimic Badge under light mode */
+.light #hero-section .inline-flex.bg-zinc-900 {
+  background-color: #f4f4f5 !important;
+  border-color: #e4e4e7 !important;
+}
+
+.light #hero-section .inline-flex.bg-zinc-900 .text-white {
+  color: #09090b !important;
+}
+
+.light #hero-section .inline-flex.bg-zinc-900 .text-zinc-350 {
+  color: #52525b !important;
+}
+
+.light #hero-section .inline-flex.bg-zinc-900 .text-zinc-450 {
+  color: #27272a !important;
+}
+
+.light #hero-section .inline-flex.bg-zinc-900 .text-zinc-650 {
+  color: #d4d4d8 !important;
+}
+
 .light .text-zinc-350,
 .light .text-zinc-450,
 .light .text-zinc-300 {
@@ -187,9 +209,20 @@
   color: #18181b !important;
 }
 
-.light #custom-karma-builder-container .bg-orange-600\/10 {
+.light #custom-karma-builder-container .bg-orange-600\/10,
+.light #pricing .bg-orange-600\/10 {
   background-color: #fff7ed !important;
   border-color: #ffd8a8 !important;
+}
+
+.light #custom-karma-builder-container .bg-orange-600\/10 span,
+.light #pricing .bg-orange-600\/10 span {
+  color: #c2410c !important;
+}
+
+.light #custom-karma-builder-container .bg-orange-600\/10 .text-white,
+.light #pricing .bg-orange-600\/10 .text-white {
+  color: #9a3412 !important;
 }
 
 .light #custom-karma-builder-container .bg-zinc-950.border-zinc-900 {

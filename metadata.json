@@ -1,0 +1,8 @@
+{
+  "name": "Reddit Karma Boost",
+  "description": "Safe, fast, and interactive platform to purchase Reddit Karma packages securely and track real-time delivery status.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

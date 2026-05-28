@@ -7,12 +7,6 @@ export default function WhatsAppSupport() {
 
   const phoneNumber = "923029626015";
 
-  const messageOptions = [
-    { text: "Verify an order campaign", query: "Hello! I want to verify my Reddit Karma Boost campaign." },
-    { text: "Reseller bulk discount queries", query: "Hi, I am looking for custom bulk reseller pricing packages." },
-    { text: "Safe campaign check", query: "Hello! Is my account safe for a 1,500 Karma boost?" }
-  ];
-
   const triggerChat = (customMsg: string) => {
     const encoded = encodeURIComponent(customMsg);
     window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, "_blank");
@@ -74,24 +68,8 @@ export default function WhatsAppSupport() {
 
           {/* Interactive Chat Board */}
           <div className="p-4 bg-zinc-950/40 flex-1 space-y-4 max-h-[300px] overflow-y-auto">
-            <div className="bg-zinc-900 p-3 rounded-xl border border-zinc-850 text-xs text-zinc-300 leading-relaxed font-sans max-w-[90%]">
+            <div className="bg-zinc-900 p-3 rounded-xl border border-zinc-850 text-xs text-zinc-300 leading-relaxed font-sans max-w-[95%]">
               Hello there! 👋 Welcome to RedditKarmaBoost.com support desk. How can our organic campaigners assist you today?
-            </div>
-
-            {/* Quick Presets list */}
-            <div className="space-y-2 pt-1 font-sans">
-              <span className="text-[9px] text-zinc-550 uppercase tracking-wider font-mono block">Suggested Questions</span>
-              {messageOptions.map((opt, index) => (
-                <button
-                  key={index}
-                  onClick={() => triggerChat(opt.query)}
-                  className="w-full text-left p-2.5 rounded-xl bg-zinc-900 border border-zinc-850 hover:bg-zinc-800 text-xs font-semibold text-orange-400 font-sans transition flex items-center justify-between group cursor-pointer"
-                  id={`wa-preset-btn-${index}`}
-                >
-                  <span>{opt.text}</span>
-                  <span className="text-zinc-650 group-hover:text-orange-400 transition-colors text-xs font-mono">→</span>
-                </button>
-              ))}
             </div>
           </div>
 

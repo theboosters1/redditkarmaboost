@@ -11,6 +11,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
   // Indices corresponding to customizer selections:
   const [commentIndex, setCommentIndex] = useState(1); // Default to index 1 (10 Comment Karma)
   const [postIndex, setPostIndex] = useState(1); // Default to index 1 (15 Post Karma)
+  const [redditUsername, setRedditUsername] = useState("");
 
   const selectedComment = COMMENT_KARMA_PLANS[commentIndex];
   const selectedPost = POST_KARMA_PLANS[postIndex];
@@ -21,29 +22,21 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
   const handleCustomCheckout = () => {
     if (totalPrice === 0) return;
 
-    const labelList: string[] = [];
-    if (selectedComment.karma > 0) labelList.push(`${selectedComment.karma} Comment`);
-    if (selectedPost.karma > 0) labelList.push(`${selectedPost.karma} Post`);
+    const cleanUsername = redditUsername.trim().replace(/^u\//i, "");
+    
+    // Construct rich, professional order details to send to WhatsApp chat
+    const message = `🚀 *NEW CUSTOM REDDIT KARMA ORDER* 🚀
+----------------------------------------
+👤 *Reddit Username:* ${cleanUsername ? `u/${cleanUsername}` : "_Not specified_"}
+💬 *Comment Karma:* ${selectedComment.karma > 0 ? `+${selectedComment.karma} Karma ($${selectedComment.price})` : "None"}
+📝 *Post Karma:* ${selectedPost.karma > 0 ? `+${selectedPost.karma} Karma ($${selectedPost.price})` : "None"}
+📈 *Total Target Karma:* +${totalKarma} Points
+💰 *Combined Price:* $${totalPrice.toFixed(2)}
+----------------------------------------
+✨ Please format my custom secure Stripe checkout link!`;
 
-    const customPkg: KarmaPackage = {
-      id: "pkg-custom-builder",
-      name: `Custom Campaign (${labelList.join(" + ")})`,
-      karmaCount: totalKarma,
-      price: totalPrice,
-      isPopular: true,
-      features: [
-        selectedComment.karma > 0 ? `${selectedComment.karma} Dedicated High-Quality Comments & upvotes` : "",
-        selectedPost.karma > 0 ? `${selectedPost.karma} Instant Authority-High Post Upvotes and filter bypass` : "",
-        "Optimized combination ratio algorithm applied",
-        "100% Secure & safe queue drip-feed delivery",
-        "Anti-shadowban campaign protocols active",
-        "WhatsApp personal priority assistant access"
-      ].filter(Boolean) as string[],
-      deliveryTime: "12-24 Hours",
-      karmaType: selectedComment.karma > 0 && selectedPost.karma > 0 ? "mix" : (selectedComment.karma > 0 ? "comment" : "post")
-    };
-
-    onSelectPackage(customPkg);
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/923029626015?text=${encoded}`, "_blank");
   };
 
   return (
@@ -186,42 +179,65 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
               </div>
             </div>
 
-            {/* Dropdown Menus for Customizing */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-zinc-950/40 p-4 rounded-2xl border border-zinc-850">
-              <div className="space-y-1.5 text-left">
-                <label className="block text-[11px] font-semibold text-zinc-450 uppercase tracking-widest font-mono">
-                  Comment Karma Plan Dropdown
-                </label>
-                <select
-                  value={commentIndex}
-                  onChange={(e) => setCommentIndex(Number(e.target.value))}
-                  className="w-full bg-zinc-950 border border-zinc-805 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500 font-sans cursor-pointer"
-                  id="comment-plan-dropdown"
-                >
-                  {COMMENT_KARMA_PLANS.map((plan, idx) => (
-                    <option key={idx} value={idx}>
-                      {plan.karma === 0 ? "No Comment Karma (0 CK) - $0.00" : `${plan.karma} Comment Karma - $${plan.price.toFixed(2)}`}
-                    </option>
-                  ))}
-                </select>
+            {/* Dropdown Menus for Customizing & Reddit Username Target */}
+            <div className="space-y-4 bg-zinc-950/40 p-5 rounded-2xl border border-zinc-850">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5 text-left">
+                  <label className="block text-[11px] font-semibold text-zinc-450 uppercase tracking-widest font-mono">
+                    Comment Karma Plan Dropdown
+                  </label>
+                  <select
+                    value={commentIndex}
+                    onChange={(e) => setCommentIndex(Number(e.target.value))}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500 font-sans cursor-pointer animate-none"
+                    id="comment-plan-dropdown"
+                  >
+                    {COMMENT_KARMA_PLANS.map((plan, idx) => (
+                      <option key={idx} value={idx}>
+                        {plan.karma === 0 ? "No Comment Karma (0 CK) - $0.00" : `${plan.karma} Comment Karma - $${plan.price.toFixed(2)}`}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-1.5 text-left">
+                  <label className="block text-[11px] font-semibold text-zinc-450 uppercase tracking-widest font-mono">
+                    Post Karma Plan Dropdown
+                  </label>
+                  <select
+                    value={postIndex}
+                    onChange={(e) => setPostIndex(Number(e.target.value))}
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500 font-sans cursor-pointer animate-none"
+                    id="post-plan-dropdown"
+                  >
+                    {POST_KARMA_PLANS.map((plan, idx) => (
+                      <option key={idx} value={idx}>
+                        {plan.karma === 0 ? "No Post Karma (0 PK) - $0.00" : `${plan.karma} Post Karma - $${plan.price.toFixed(2)}`}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
-              <div className="space-y-1.5 text-left">
-                <label className="block text-[11px] font-semibold text-zinc-450 uppercase tracking-widest font-mono">
-                  Post Karma Plan Dropdown
+              {/* Reddit Username target configuration of custom selection */}
+              <div className="space-y-1.5 text-left border-t border-zinc-850/60 pt-4">
+                <label className="block text-[11px] font-semibold text-zinc-455 uppercase tracking-widest font-mono">
+                  Target Reddit Username (Highly Recommended)
                 </label>
-                <select
-                  value={postIndex}
-                  onChange={(e) => setPostIndex(Number(e.target.value))}
-                  className="w-full bg-zinc-950 border border-zinc-805 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500 font-sans cursor-pointer"
-                  id="post-plan-dropdown"
-                >
-                  {POST_KARMA_PLANS.map((plan, idx) => (
-                    <option key={idx} value={idx}>
-                      {plan.karma === 0 ? "No Post Karma (0 PK) - $0.00" : `${plan.karma} Post Karma - $${plan.price.toFixed(2)}`}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 font-mono text-sm">u/</span>
+                  <input
+                    type="text"
+                    placeholder="reddit_username"
+                    value={redditUsername}
+                    onChange={(e) => setRedditUsername(e.target.value)}
+                    className="w-full bg-zinc-950 border border-zinc-800/80 rounded-xl pl-9 pr-4 py-3 text-sm text-white focus:outline-none focus:border-orange-500 font-mono"
+                    id="custom-order-reddit-username"
+                  />
+                </div>
+                <p className="text-[10px] text-zinc-500">
+                  Entering your Reddit handle allows our live WhatsApp agents to instantly verify account compatibility for comment auto-moderation threshold checks.
+                </p>
               </div>
             </div>
 

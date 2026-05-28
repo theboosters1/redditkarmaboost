@@ -29,51 +29,7 @@ export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme }: 
         </div>
       </div>
 
-      {/* Nav Actions Links */}
-      <nav className="hidden md:flex items-center gap-6 text-xs text-zinc-400 font-medium">
-        <button
-          onClick={() => scrollSection("pricing")}
-          className="hover:text-white transition-colors cursor-pointer"
-          id="nav-link-packages"
-        >
-          Packages
-        </button>
-        <button
-          onClick={() => scrollSection("reviews")}
-          className="hover:text-white transition-colors cursor-pointer"
-          id="nav-link-reviews"
-        >
-          Client Reviews
-        </button>
-        <button
-          onClick={() => scrollSection("faqs")}
-          className="hover:text-white transition-colors cursor-pointer"
-          id="nav-link-paa"
-        >
-          PAA FAQs
-        </button>
-        <button
-          onClick={() => onOpenTrustModal("about")}
-          className="hover:text-white transition-colors cursor-pointer"
-          id="nav-link-about"
-        >
-          About Us
-        </button>
-        <button
-          onClick={() => onOpenTrustModal("privacy")}
-          className="hover:text-white transition-colors cursor-pointer"
-          id="nav-link-privacy"
-        >
-          Privacy Policy
-        </button>
-        <button
-          onClick={() => onOpenTrustModal("terms")}
-          className="hover:text-white transition-colors cursor-pointer"
-          id="nav-link-terms"
-        >
-          Terms of Service
-        </button>
-      </nav>
+      {/* Shifted top menu to the footer */}
 
       {/* Primary Actions */}
       <div className="flex items-center gap-2.5">

@@ -8,8 +8,11 @@ interface PricingProps {
 }
 
 export default function Pricing({ onSelectPackage }: PricingProps) {
-  // Mode toggle: Standard vs Custom Amounts
-  const [isCustomMode, setIsCustomMode] = useState(false);
+  // Mode toggle: Standard vs Custom vs Free Vouch Copy
+  const [pricingMode, setPricingMode] = useState<"standard" | "custom" | "vouch">("standard");
+
+  // Helper boolean for simpler layout handling in older places
+  const isCustomMode = pricingMode === "custom";
 
   // 1) Standard Presets States
   const [commentIndex, setCommentIndex] = useState(0); // Default to index 0 (10 Comment Karma)
@@ -64,29 +67,40 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
   };
 
   // Derive active values based on Mode Selection
-  const commentKarmaValue = isCustomMode ? customCommentAmount : selectedComment.karma;
-  const commentKarmaPrice = isCustomMode ? getCommentKarmaPrice(customCommentAmount) : selectedComment.price;
+  const commentKarmaValue = pricingMode === "custom" 
+    ? customCommentAmount 
+    : pricingMode === "vouch" 
+      ? 5 
+      : selectedComment.karma;
 
-  const postKarmaValue = isCustomMode ? customPostAmount : selectedPost.karma;
-  const postKarmaPrice = isCustomMode ? getPostKarmaPrice(customPostAmount) : selectedPost.price;
+  const commentKarmaPrice = pricingMode === "custom" 
+    ? getCommentKarmaPrice(customCommentAmount) 
+    : pricingMode === "vouch" 
+      ? 0 
+      : selectedComment.price;
+
+  const postKarmaValue = pricingMode === "custom" 
+    ? customPostAmount 
+    : pricingMode === "vouch" 
+      ? 5 
+      : selectedPost.karma;
+
+  const postKarmaPrice = pricingMode === "custom" 
+    ? getPostKarmaPrice(customPostAmount) 
+    : pricingMode === "vouch" 
+      ? 0 
+      : selectedPost.price;
 
   const totalKarma = commentKarmaValue + postKarmaValue;
   const totalPrice = commentKarmaPrice + postKarmaPrice;
 
   const handleCustomCheckout = () => {
-    if (totalPrice === 0) return;
-
     const cleanUsername = redditUsername.trim().replace(/^u\//i, "");
     
     // Construct rich, professional order details to send to WhatsApp chat
-    const message = `- *NEW REDDIT KARMA BOOST CAMPAIGN* -
-----------------------------------------
-- *Reddit Username:* ${cleanUsername ? `u/${cleanUsername}` : "_Not specified_"}
-- *Comment Karma:* ${commentKarmaValue > 0 ? `+${commentKarmaValue} CK ($${commentKarmaPrice.toFixed(2)})` : "None"}
-- *Post Karma:* ${postKarmaValue > 0 ? `+${postKarmaValue} PK ($${postKarmaPrice.toFixed(2)})` : "None"}
-- *Total Target Karma:* +${totalKarma} Points
-- *Combined Price:* $${totalPrice.toFixed(2)}
-----------------------------------------`;
+    const message = pricingMode === "vouch"
+      ? `- *FREE REDDIT VOUCH COPY REQUEST* -\n----------------------------------------\n- *Reddit Username:* ${cleanUsername ? `u/${cleanUsername}` : "_Not specified_"}\n- *Package:* FREE VOUCH COPY (+10 Karma)\n- *In Exchange For:* High-authority vouch thread review\n- *Combined Price:* $0.00 (FREE)\n----------------------------------------`
+      : `- *NEW REDDIT KARMA BOOST CAMPAIGN* -\n----------------------------------------\n- *Reddit Username:* ${cleanUsername ? `u/${cleanUsername}` : "_Not specified_"}\n- *Comment Karma:* ${commentKarmaValue > 0 ? `+${commentKarmaValue} CK ($${commentKarmaPrice.toFixed(2)})` : "None"}\n- *Post Karma:* ${postKarmaValue > 0 ? `+${postKarmaValue} PK ($${postKarmaPrice.toFixed(2)})` : "None"}\n- *Total Target Karma:* +${totalKarma} Points\n- *Combined Price:* $${totalPrice.toFixed(2)}\n----------------------------------------`;
 
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/923029626015?text=${encoded}`, "_blank");
@@ -110,28 +124,39 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
         </div>
 
         {/* Mode Switch Tab Bar */}
-        <div className="flex bg-zinc-950 p-1 rounded-xl border border-zinc-900 max-w-md mx-auto relative z-20">
+        <div className="flex bg-zinc-950 p-1 rounded-xl border border-zinc-900 max-w-lg mx-auto relative z-20">
           <button
             type="button"
-            onClick={() => setIsCustomMode(false)}
-            className={`flex-1 py-2 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
-              !isCustomMode 
+            onClick={() => setPricingMode("standard")}
+            className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
+              pricingMode === "standard" 
                 ? "bg-zinc-900 text-white font-extrabold border border-zinc-800 shadow" 
-                : "text-zinc-400 hover:text-zinc-200"
+                : "text-zinc-400 hover:text-zinc-200 cursor-pointer"
             }`}
           >
             🚀 Standard Levels
           </button>
           <button
             type="button"
-            onClick={() => setIsCustomMode(true)}
-            className={`flex-1 py-2 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
-              isCustomMode 
-                ? "bg-zinc-900 text-white font-extrabold border border-zinc-805 shadow" 
-                : "text-zinc-400 hover:text-zinc-200"
+            onClick={() => setPricingMode("custom")}
+            className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
+              pricingMode === "custom" 
+                ? "bg-zinc-900 text-white font-extrabold border border-zinc-850 shadow" 
+                : "text-zinc-400 hover:text-zinc-200 cursor-pointer"
             }`}
           >
-            💎 Direct Custom amounts
+            💎 Direct Custom
+          </button>
+          <button
+            type="button"
+            onClick={() => setPricingMode("vouch")}
+            className={`flex-1 py-2.5 rounded-lg text-xs font-black transition-all duration-150 flex items-center justify-center gap-1.5 ${
+              pricingMode === "vouch" 
+                ? "bg-zinc-900 text-orange-400 font-extrabold border border-orange-550/20 shadow bg-gradient-to-r from-orange-500/10 to-amber-500/10" 
+                : "text-zinc-400 hover:text-zinc-300 cursor-pointer"
+            }`}
+          >
+            🎁 Free Vouch Copy
           </button>
         </div>
 
@@ -140,20 +165,19 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="relative space-y-6">
-            
-            {/* Widget Title Header */}
+                {/* Widget Title Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-900/60 pb-4">
               <div className="space-y-0.5 text-left">
                 <div className="flex items-center gap-2">
                   <span className="px-1.5 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[9px] font-black uppercase tracking-wider font-mono">
-                    Instant Customizer
+                    {pricingMode === "vouch" ? "VOUCH COUPON PROGRAM" : "Instant Customizer"}
                   </span>
                   <span className="flex items-center gap-1 text-zinc-400 text-[11px] font-bold">
-                    <Sliders className="w-3 h-3 text-orange-555 animate-pulse" /> Real-time price estimator
+                    <Sliders className="w-3 h-3 text-orange-550 animate-pulse" /> {pricingMode === "vouch" ? "Zero Transaction Fees" : "Real-time price estimator"}
                   </span>
                 </div>
                 <h3 className="text-lg md:text-xl font-extrabold text-white font-sans tracking-tight">
-                  {isCustomMode ? "Direct Custom Campaign" : "Preset Tiers Selection"}
+                  {pricingMode === "standard" ? "Preset Tiers Selection" : pricingMode === "custom" ? "Direct Custom Campaign" : "Free Review Vouch Copy"}
                 </h3>
               </div>
               
@@ -161,8 +185,12 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
               <div className="bg-orange-600/10 border border-orange-500/20 rounded-lg px-3 py-1.5 flex items-center gap-2 shrink-0 self-start sm:self-auto">
                 <Percent className="w-3.5 h-3.5 text-orange-400" />
                 <div className="text-left font-sans">
-                  <span className="text-[9px] text-zinc-400 block font-mono uppercase font-bold tracking-wider leading-none">Summed Promo</span>
-                  <span className="text-[11px] text-white font-black leading-none">Ratio Discount Built-In</span>
+                  <span className="text-[9px] text-zinc-400 block font-mono uppercase font-bold tracking-wider leading-none">
+                    {pricingMode === "vouch" ? "FREE OFFER" : "Summed Promo"}
+                  </span>
+                  <span className="text-[11px] text-white font-black leading-none">
+                    {pricingMode === "vouch" ? "100% OFF TRIAL COPY" : "Ratio Discount Built-In"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -171,7 +199,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
             <div className="space-y-5">
               
               {/* Mode A: Standard Segmented Bars */}
-              {!isCustomMode ? (
+              {pricingMode === "standard" && (
                 <div className="space-y-5">
                   {/* 1. Comment Karma bar */}
                   <div className="space-y-2">
@@ -189,7 +217,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                       <div 
                         className="absolute left-1 top-1 bottom-1 bg-gradient-to-r from-orange-600/20 to-amber-500/20 rounded-lg border border-orange-500/30 transition-all duration-300"
                         style={{
-                          width: `calc(${(commentIndex / (COMMENT_KARMA_PLANS.length - 1)) * 100}% - ${8 * (COMMENT_KARMA_PLANS.length - 1 - commentIndex) / COMMENT_KARMA_PLANS.length}px)`,
+                          width: `calc(${(commentIndex / (COMMENT_KARMA_PLANS.length - 1)) * 105}% - ${8 * (COMMENT_KARMA_PLANS.length - 1 - commentIndex) / COMMENT_KARMA_PLANS.length}px)`,
                           minWidth: '40px'
                         }}
                       />
@@ -203,7 +231,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                             className={`flex-1 h-full rounded-lg text-xs transition-all duration-150 relative z-10 flex flex-col justify-center items-center py-0.5 ${
                               isSelected 
                                 ? "text-white bg-zinc-900 border border-zinc-800 shadow" 
-                                : "text-zinc-400 hover:text-zinc-200"
+                                : "text-zinc-400 hover:text-zinc-200 cursor-pointer"
                             }`}
                           >
                             <span className="font-mono font-black text-[11px] md:text-xs">{`+${plan.karma}`}</span>
@@ -230,7 +258,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                       <div 
                         className="absolute left-1 top-1 bottom-1 bg-gradient-to-r from-orange-600/20 to-amber-500/20 rounded-lg border border-orange-500/30 transition-all duration-300"
                         style={{
-                          width: `calc(${(postIndex / (POST_KARMA_PLANS.length - 1)) * 100}% - ${8 * (POST_KARMA_PLANS.length - 1 - postIndex) / POST_KARMA_PLANS.length}px)`,
+                          width: `calc(${(postIndex / (POST_KARMA_PLANS.length - 1)) * 105}% - ${8 * (POST_KARMA_PLANS.length - 1 - postIndex) / POST_KARMA_PLANS.length}px)`,
                           minWidth: '40px'
                         }}
                       />
@@ -244,7 +272,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                             className={`flex-1 h-full rounded-lg text-xs transition-all duration-150 relative z-10 flex flex-col justify-center items-center py-0.5 ${
                               isSelected 
                                 ? "text-white bg-zinc-900 border border-zinc-800 shadow" 
-                                : "text-zinc-400 hover:text-zinc-200"
+                                : "text-zinc-400 hover:text-zinc-200 cursor-pointer"
                             }`}
                           >
                             <span className="font-mono font-black text-[11px] md:text-xs">{`+${plan.karma}`}</span>
@@ -255,8 +283,10 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                     </div>
                   </div>
                 </div>
-              ) : (
-                // Mode B: Interactive Direct Input & Fluid Range Sliders
+              )}
+
+              {/* Mode B: Interactive Direct Input & Fluid Range Sliders */}
+              {pricingMode === "custom" && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Custom Comment Karma range customizer */}
                   <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-900 space-y-3">
@@ -331,6 +361,44 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                   </div>
                 </div>
               )}
+
+              {/* Mode C: Free Vouch Copy Review Plan */}
+              {pricingMode === "vouch" && (
+                <div className="space-y-4 bg-zinc-950/20 p-5 rounded-xl border border-dashed border-orange-500/30 text-left">
+                  <div className="flex items-center gap-2.5">
+                    <span className="p-1 px-2.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/20 text-[10px] font-black uppercase text-orange-400 font-mono tracking-wider">
+                      🎁 VOUCH TRIAL COPY
+                    </span>
+                    <h4 className="text-white text-xs font-black uppercase tracking-wider font-sans">
+                      Redeem 100% Free Karma Package
+                    </h4>
+                  </div>
+                  <p className="text-zinc-350 text-xs leading-relaxed max-w-2xl font-sans">
+                    Are you active on popular forum boards (BHW, HackForums, BMF, Discord) or just want to test our organic drip transfer speed? To support active builders, we offer a <strong className="text-orange-400">Free +10 Karma Trial Slice (+5 CK +5 PK)</strong>! Simply write your Reddit username below and claim your vouch package copy over live chat.
+                  </p>
+                  <p className="text-zinc-400 text-[11px] leading-relaxed max-w-2xl font-sans font-medium">
+                    All we ask in exchange is that you leave a genuine vouch review on our thread once delivery completes.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-zinc-400 pt-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-orange-500 font-bold">✓</span>
+                      <span>No payment method or password info requested</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-orange-500 font-bold">✓</span>
+                      <span>Drip-delivered safely in 4-8 hours</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-orange-500 font-bold">✓</span>
+                      <span>Real aged high-karma profiles engagement</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-orange-500 font-bold">✓</span>
+                      <span>Fully upgradable to standard campaign tiers</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Target configuration box & Reddit Username input */}
@@ -399,7 +467,15 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                 </div>
 
                 <div className="w-full sm:w-auto">
-                  {totalPrice > 0 ? (
+                  {pricingMode === "vouch" ? (
+                    <button
+                      type="button"
+                      onClick={handleCustomCheckout}
+                      className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white text-xs font-black rounded-lg transition-all duration-150 flex items-center justify-center gap-1.5 shadow-lg shadow-orange-500/20 cursor-pointer hover:scale-[1.01]"
+                    >
+                      🎁 Claim Free Vouch Copy
+                    </button>
+                  ) : totalPrice > 0 ? (
                     <button
                       type="button"
                       onClick={handleCustomCheckout}

@@ -35,23 +35,23 @@ export default function Footer({ onOpenTrustModal }: FooterProps) {
           </div>
         </div>
 
-        {/* Quick Navigate Column */}
+        {/* Quick Navigate Column (Shifted from Top Header) */}
         <div className="md:col-span-2 space-y-3.5">
           <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">Navigate</h4>
           <ul className="space-y-2 text-zinc-500 font-medium">
             <li>
               <button onClick={() => scrollSection("pricing")} className="hover:text-white transition-colors cursor-pointer text-left">
-                Boost Packages
+                Packages
               </button>
             </li>
             <li>
               <button onClick={() => scrollSection("reviews")} className="hover:text-white transition-colors cursor-pointer text-left">
-                Success Stories
+                Client Reviews
               </button>
             </li>
             <li>
               <button onClick={() => scrollSection("faqs")} className="hover:text-white transition-colors cursor-pointer text-left">
-                People Also Asked
+                PAA FAQs
               </button>
             </li>
           </ul>
@@ -63,7 +63,7 @@ export default function Footer({ onOpenTrustModal }: FooterProps) {
           <ul className="space-y-2 text-zinc-500 font-medium">
             <li>
               <button onClick={() => onOpenTrustModal("about")} className="hover:text-white transition-colors cursor-pointer text-left">
-                About Our Campaign
+                About Us
               </button>
             </li>
             <li>

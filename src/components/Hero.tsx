@@ -110,6 +110,56 @@ export default function Hero({ onGetStartedClick }: HeroProps) {
           <span>•</span>
           <span className="flex items-center gap-1"><Zap className="w-3 h-3 text-orange-500" /> AUTOMATIC REFUND INSURANCE</span>
         </div>
+
+        {/* Step-by-Step Instruction Guide */}
+        <div className="mt-8 pt-6 border-t border-zinc-900/80 text-left max-w-3xl mx-auto space-y-4" id="how-it-works-guide">
+          <h3 className="text-xs font-black text-center text-zinc-200 uppercase tracking-widest font-mono">
+            How RedditKarmaBoost Work, what do I do to start?
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-zinc-900/30 border border-zinc-900 rounded-xl p-4 space-y-2 flex flex-col justify-start">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-orange-600/10 border border-orange-500/20 text-orange-400 flex items-center justify-center font-mono text-xs font-black shrink-0">
+                  1
+                </span>
+                <h4 className="text-xs font-black text-white font-sans uppercase tracking-wider">
+                  Place & Confirm
+                </h4>
+              </div>
+              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
+                Place and confirm your order through WhatsApp chat where we provide the most feasible payment gateway for your assistance.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/30 border border-zinc-900 rounded-xl p-4 space-y-2 flex flex-col justify-start">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-orange-600/10 border border-orange-500/20 text-orange-400 flex items-center justify-center font-mono text-xs font-black shrink-0">
+                  2
+                </span>
+                <h4 className="text-xs font-black text-white font-sans uppercase tracking-wider">
+                  Secure Co-Posting
+                </h4>
+              </div>
+              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
+                Once order is placed, The RedditKarmaBoost team will send you the post link along with the suggested <strong className="text-orange-400">TEXT</strong> to post, This practice makes it very secure as the Karma is being built by the real account author, we just suggest the best post and text to post.
+              </p>
+            </div>
+
+            <div className="bg-zinc-900/30 border border-zinc-900 rounded-xl p-4 space-y-2 flex flex-col justify-start">
+              <div className="flex items-center gap-2">
+                <span className="w-6 h-6 rounded-full bg-orange-600/10 border border-orange-500/20 text-orange-400 flex items-center justify-center font-mono text-xs font-black shrink-0">
+                  3
+                </span>
+                <h4 className="text-xs font-black text-white font-sans uppercase tracking-wider">
+                  Full achievement
+                </h4>
+              </div>
+              <p className="text-[11px] text-zinc-400 leading-relaxed font-sans">
+                The team will keep suggesting posts till the desired Karma target is achieved.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

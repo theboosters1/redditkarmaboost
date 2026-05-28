@@ -691,9 +691,13 @@
   }
 }
 
-/* Guarantee Submit / Campaign Build Button text is white in all states */
-#boost-campaign-btn,
-.light #boost-campaign-btn {
+/* Guarantee Submit / Campaign Build Button and Claim Free Vouch Button texts are white in all states and themes */
+#pricing #boost-campaign-btn,
+#pricing #claim-free-vouch-btn,
+.light #pricing .bg-zinc-950 #boost-campaign-btn,
+.light #pricing .bg-zinc-950 #claim-free-vouch-btn,
+.light #boost-campaign-btn,
+.light #claim-free-vouch-btn {
   color: #ffffff !important;
 }
 

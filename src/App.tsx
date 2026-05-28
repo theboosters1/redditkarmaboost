@@ -9,7 +9,6 @@ import TrustPages from "./components/TrustPages";
 import CheckoutModal from "./components/CheckoutModal";
 import WhatsAppSupport from "./components/WhatsAppSupport";
 import { KarmaPackage, Order } from "./types";
-import { ArrowRight } from "lucide-react";
 
 export default function App() {
   const [selectedPackage, setSelectedPackage] = useState<KarmaPackage | null>(null);
@@ -39,29 +38,7 @@ export default function App() {
       />
 
       {/* Hero section */}
-      <Hero onGetStartedClick={() => scrollSection("pricing")} />
-
-      {/* Quick Trust Highlights Banner */}
-      <div className="bg-zinc-900/55 border-b border-zinc-900 py-4 px-4 md:px-8 relative z-20 select-none">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2.5">
-            <span className="flex items-center gap-1.5 p-1 px-2.5 rounded bg-zinc-950 border border-zinc-800 text-[10px] font-bold text-orange-400 font-mono tracking-widest uppercase">
-              How it works
-            </span>
-            <span className="text-zinc-300 font-medium text-xs md:text-sm">
-              Level up account reputation in 3 easy steps: Choose Kit → Confirm Reddit Account → Secure Drip-feed Begins.
-            </span>
-          </div>
-          <button
-            onClick={() => scrollSection("pricing")}
-            className="text-xs text-orange-500 font-bold flex items-center justify-center gap-1 hover:text-orange-400 transition cursor-pointer"
-            id="highlight-banner-cta"
-          >
-            <span>Learn More</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      </div>
+      <Hero />
 
       {/* Main Sections */}
       <main className="flex-1">

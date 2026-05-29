@@ -48,8 +48,9 @@ export default function App() {
   };
 
   const handleSelectFreeVouch = () => {
-    setPricingMode("vouch");
-    scrollSection("pricing");
+    const message = `- *FREE REDDIT VOUCH COPY REQUEST* -\n----------------------------------------\n- *Reddit Username:* _Not specified_\n- *Package:* FREE VOUCH COPY (+10 Karma)\n- *In Exchange For:* High-authority vouch thread review\n- *Combined Price:* $0.00 (FREE)\n----------------------------------------`;
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/923029626015?text=${encoded}`, "_blank");
   };
 
   return (

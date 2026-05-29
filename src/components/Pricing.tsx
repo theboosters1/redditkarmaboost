@@ -166,7 +166,7 @@ export default function Pricing({ onSelectPackage, pricingMode: propPricingMode,
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full animate-vouch-shimmer pointer-events-none" />
             
             <span className="vouch-gift-emoji animate-vouch-emoji-wiggle">🎁</span> 
-            <span className="vouch-text-glow">Free Vouch Copy</span>
+            <span className="vouch-text-glow">Try Free Karma</span>
 
             {/* Pulsing indicator badge */}
             <span className="absolute top-1 right-2 flex h-1.5 w-1.5">
@@ -193,7 +193,7 @@ export default function Pricing({ onSelectPackage, pricingMode: propPricingMode,
                   </span>
                 </div>
                 <h3 className="text-lg md:text-xl font-extrabold text-white font-sans tracking-tight">
-                  {pricingMode === "standard" ? "Preset Tiers Selection" : pricingMode === "custom" ? "Direct Custom Campaign" : "Free Review Vouch Copy"}
+                  {pricingMode === "standard" ? "Preset Tiers Selection" : pricingMode === "custom" ? "Direct Custom Campaign" : "Try Free Karma"}
                 </h3>
               </div>
               

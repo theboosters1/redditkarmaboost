@@ -1,10 +1,48 @@
 import { Flame, ShieldCheck, Heart, ExternalLink } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface FooterProps {
   onOpenTrustModal: (type: "about" | "privacy" | "terms") => void;
 }
 
 export default function Footer({ onOpenTrustModal }: FooterProps) {
+  const [onlineCount, setOnlineCount] = useState(1);
+
+  useEffect(() => {
+    let sessionId = sessionStorage.getItem("rkb_session_id");
+    if (!sessionId) {
+      sessionId = "sess-" + Math.random().toString(36).substring(2) + Date.now().toString(36);
+      sessionStorage.setItem("rkb_session_id", sessionId);
+    }
+
+    const sendHeartbeat = async () => {
+      try {
+        const response = await fetch("/api/heartbeat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ sessionId }),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (typeof data.activeCount === "number") {
+            setOnlineCount(data.activeCount);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to update active visitors state:", err);
+      }
+    };
+
+    // Initial trigger
+    sendHeartbeat();
+
+    // Rapid heartbeat every 10s
+    const interval = setInterval(sendHeartbeat, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -32,6 +70,15 @@ export default function Footer({ onOpenTrustModal }: FooterProps) {
           <div className="text-[10px] text-zinc-550 space-y-1">
             <span className="block">📞 WhatsApp Hot Line: <strong>+923029626015</strong></span>
             <span className="block">📧 Support Email: <strong className="text-zinc-400">support@redditkarmaboost.com</strong></span>
+          </div>
+          <div className="flex items-center gap-2 bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-900/30 px-3 py-1.5 rounded-lg w-fit mt-2 shadow-sm" id="footer-online-users">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-[10px] font-mono tracking-wide text-zinc-500 dark:text-zinc-400 uppercase font-black flex items-center gap-1">
+              Live Status: <strong className="text-emerald-600 dark:text-emerald-450 font-black">{onlineCount}</strong> Users Active Online
+            </span>
           </div>
         </div>
 

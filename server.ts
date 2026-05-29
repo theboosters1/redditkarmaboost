@@ -41,6 +41,25 @@ function getStripe(): Stripe | null {
 }
 
 // REST API endpoints
+const activeBrowserSessions = new Map<string, number>();
+
+app.post("/api/heartbeat", (req, res) => {
+  const { sessionId } = req.body;
+  const now = Date.now();
+  if (sessionId) {
+    activeBrowserSessions.set(sessionId, now);
+  }
+
+  // Prune sessions older than 25 seconds (since clients ping every 10 seconds)
+  for (const [id, lastSeen] of activeBrowserSessions.entries()) {
+    if (now - lastSeen > 25000) {
+      activeBrowserSessions.delete(id);
+    }
+  }
+
+  res.json({ activeCount: 100 + activeBrowserSessions.size });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", time: new Date().toISOString() });
 });

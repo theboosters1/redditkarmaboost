@@ -4,9 +4,10 @@ interface NavbarProps {
   onOpenTrustModal: (type: "about" | "privacy" | "terms") => void;
   isDarkMode: boolean;
   onToggleTheme: () => void;
+  onSelectFreeVouch: () => void;
 }
 
-export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme }: NavbarProps) {
+export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme, onSelectFreeVouch }: NavbarProps) {
   const scrollSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -43,7 +44,7 @@ export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme }: 
         </button>
 
         <button
-          onClick={() => scrollSection("pricing")}
+          onClick={onSelectFreeVouch}
           className="px-3.5 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-extrabold rounded-xl text-[11px] md:text-xs shadow-lg cursor-pointer relative overflow-hidden animate-get-karma-btn-glow"
           id="nav-btn-buy"
         >
@@ -51,7 +52,7 @@ export default function Navbar({ onOpenTrustModal, isDarkMode, onToggleTheme }: 
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-vouch-shimmer pointer-events-none" />
           
           <span className="relative z-10 flex items-center gap-1">
-            🔥 Get Karma Now
+            🔥 Get Free Karma
           </span>
         </button>
       </div>

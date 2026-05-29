@@ -14,6 +14,7 @@ export default function App() {
   const [selectedPackage, setSelectedPackage] = useState<KarmaPackage | null>(null);
   const [trustModalType, setTrustModalType] = useState<"about" | "privacy" | "terms" | null>(null);
   const [recentOrderAlert, setRecentOrderAlert] = useState<Order | null>(null);
+  const [pricingMode, setPricingMode] = useState<"standard" | "custom" | "vouch">("standard");
 
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== "undefined") {
@@ -46,6 +47,11 @@ export default function App() {
     }
   };
 
+  const handleSelectFreeVouch = () => {
+    setPricingMode("vouch");
+    scrollSection("pricing");
+  };
+
   return (
     <div className={`min-h-screen ${isDarkMode ? "bg-zinc-950 text-zinc-100" : "light bg-zinc-50 text-zinc-905"} flex flex-col font-sans antialiased overflow-x-hidden`} id="app-root-container">
       {/* Top Header Navigation */}
@@ -53,6 +59,7 @@ export default function App() {
         onOpenTrustModal={(type) => setTrustModalType(type)}
         isDarkMode={isDarkMode}
         onToggleTheme={toggleTheme}
+        onSelectFreeVouch={handleSelectFreeVouch}
       />
 
       {/* Hero section */}
@@ -88,7 +95,11 @@ export default function App() {
         )}
 
         {/* Pricing Tables section */}
-        <Pricing onSelectPackage={handleSelectPackage} />
+        <Pricing 
+          onSelectPackage={handleSelectPackage} 
+          pricingMode={pricingMode}
+          onChangePricingMode={setPricingMode}
+        />
 
         {/* Client success stories section */}
         <Reviews />

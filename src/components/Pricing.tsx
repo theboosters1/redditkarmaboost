@@ -5,11 +5,16 @@ import { KarmaPackage } from "../types";
 
 interface PricingProps {
   onSelectPackage: (pkg: KarmaPackage) => void;
+  pricingMode?: "standard" | "custom" | "vouch";
+  onChangePricingMode?: (mode: "standard" | "custom" | "vouch") => void;
 }
 
-export default function Pricing({ onSelectPackage }: PricingProps) {
+export default function Pricing({ onSelectPackage, pricingMode: propPricingMode, onChangePricingMode: propOnChangePricingMode }: PricingProps) {
   // Mode toggle: Standard vs Custom vs Free Vouch Copy
-  const [pricingMode, setPricingMode] = useState<"standard" | "custom" | "vouch">("standard");
+  const [internalPricingMode, setInternalPricingMode] = useState<"standard" | "custom" | "vouch">("standard");
+
+  const pricingMode = propPricingMode !== undefined ? propPricingMode : internalPricingMode;
+  const setPricingMode = propOnChangePricingMode !== undefined ? propOnChangePricingMode : setInternalPricingMode;
 
   // Helper boolean for simpler layout handling in older places
   const isCustomMode = pricingMode === "custom";
@@ -384,16 +389,10 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                       Redeem 100% Free Karma Package
                     </h4>
                   </div>
-                  <p className="text-zinc-350 text-xs leading-relaxed max-w-2xl font-sans">
-                    Are you active on popular forum boards (BHW, HackForums, BMF, Discord) or just want to test our organic drip transfer speed? To support active builders, we offer a <strong className="text-orange-400">Free +10 Karma Trial Slice (+5 CK +5 PK)</strong>! Simply write your Reddit username below and claim your vouch package copy over live chat.
-                  </p>
-                  <p className="text-zinc-400 text-[11px] leading-relaxed max-w-2xl font-sans font-medium">
-                    All we ask in exchange is that you leave a genuine vouch review on our thread once delivery completes.
-                  </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px] text-zinc-400 pt-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-orange-500 font-bold">✓</span>
-                      <span>No payment method or password info requested</span>
+                       <span className="text-orange-500 font-bold">✓</span>
+                       <span>No payment method or password info requested</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-orange-500 font-bold">✓</span>
@@ -412,34 +411,11 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
               )}
             </div>
 
-            {/* Target configuration box & Reddit Username input */}
-            <div className="space-y-3 bg-zinc-950/40 p-4 rounded-xl border border-zinc-900">
-              {/* Reddit Username Target */}
-              <div className="space-y-1 text-left">
-                <label className="block text-[11px] font-black text-zinc-200 uppercase tracking-widest font-mono">
-                  Target Reddit Username (Recommended)
-                </label>
-                <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 font-mono text-xs font-bold">u/</span>
-                  <input
-                    type="text"
-                    placeholder="reddit_username"
-                    value={redditUsername}
-                    onChange={(e) => setRedditUsername(e.target.value)}
-                    className="w-full bg-zinc-950 border border-zinc-900 rounded-lg pl-8 pr-4 py-2 text-xs text-white focus:outline-none focus:border-orange-500 font-mono font-bold"
-                  />
-                </div>
-                <p className="text-[10px] text-zinc-400 leading-relaxed font-medium">
-                  Entering your Reddit handle allows our live support agents to instantly verify account compatibility for auto-moderation threshold filters.
-                </p>
-              </div>
-            </div>
-
             {/* Pricing Calculation Summary Box */}
             <div className="bg-zinc-950 border border-zinc-900 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
               
               <div className="space-y-1 text-left w-full sm:w-auto">
-                <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block font-bold">Combined Estimate</span>
+                <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">Combined Estimate</span>
                 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <div className="flex items-baseline gap-1">
@@ -488,7 +464,7 @@ export default function Pricing({ onSelectPackage }: PricingProps) {
                       {/* Shimmer sweep effect */}
                       <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-vouch-shimmer pointer-events-none" />
 
-                      <span className="vouch-gift-emoji-btn animate-vouch-emoji-wiggle">🎁</span> Claim Free Vouch Copy
+                      <span className="vouch-gift-emoji-btn animate-vouch-emoji-wiggle">🎁</span> Claim Free Karma
                     </button>
                   ) : totalPrice > 0 ? (
                     <button

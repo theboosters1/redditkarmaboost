@@ -72,7 +72,7 @@ export default function Footer({ onOpenTrustModal }: FooterProps) {
           </p>
           <div className="text-[10px] text-zinc-550 space-y-1">
             <span className="block">📞 WhatsApp Hot Line: <strong>+923029626015</strong></span>
-            <span className="block">📧 Support Email: <strong className="text-zinc-400">support@redditkarmaboost.com</strong></span>
+            <span className="block">📧 Support Email: <strong className="text-zinc-400">RedditFactory@gmail.com</strong></span>
           </div>
           <div className="flex items-center gap-2 bg-emerald-500/10 dark:bg-emerald-950/20 border border-emerald-500/20 dark:border-emerald-900/30 px-3 py-1.5 rounded-lg w-fit mt-2 shadow-sm" id="footer-online-users">
             <span className="relative flex h-2 w-2">

@@ -6,10 +6,7 @@ interface FooterProps {
 }
 
 export default function Footer({ onOpenTrustModal }: FooterProps) {
-  const [onlineCount, setOnlineCount] = useState(() => {
-    // Generate an illustrative, realistic baseline on first mount
-    return Math.floor(135 + Math.random() * 20);
-  });
+  const [onlineCount, setOnlineCount] = useState(101);
 
   useEffect(() => {
     let sessionId = sessionStorage.getItem("rkb_session_id");

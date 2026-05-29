@@ -42,6 +42,7 @@ function getStripe(): Stripe | null {
 
 // REST API endpoints
 const activeBrowserSessions = new Map<string, number>();
+let baseFakeCount = 138;
 
 app.post("/api/heartbeat", (req, res) => {
   const { sessionId } = req.body;
@@ -57,7 +58,11 @@ app.post("/api/heartbeat", (req, res) => {
     }
   }
 
-  res.json({ activeCount: 100 + activeBrowserSessions.size });
+  // Natural slow drift of +/- 2 users within [120, 175] representation
+  const drift = Math.floor(Math.random() * 5) - 2; // -2, -1, 0, +1, or +2
+  baseFakeCount = Math.max(120, Math.min(175, baseFakeCount + drift));
+
+  res.json({ activeCount: baseFakeCount + activeBrowserSessions.size });
 });
 
 app.get("/api/health", (req, res) => {
